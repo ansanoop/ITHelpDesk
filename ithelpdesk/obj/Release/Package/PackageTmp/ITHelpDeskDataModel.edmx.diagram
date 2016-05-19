@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="57b0543e80ad4f4e8f710de9947f69bd" Name="Diagram1">
+        <EntityTypeShape EntityType="Athl_TicketRequestTestModel.Category" Width="1.5" PointX="5.875" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Athl_TicketRequestTestModel.Issue" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Athl_TicketRequestTestModel.Note" Width="1.5" PointX="9.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Athl_TicketRequestTestModel.Process" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <AssociationConnector Association="Athl_TicketRequestTestModel.FK_Notes_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="Athl_TicketRequestTestModel.FK_Process_Issues" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

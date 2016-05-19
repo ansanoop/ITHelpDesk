@@ -1,0 +1,66 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.master.cs" Inherits="ithelpdesk.Default1" %>
+<%@ Register TagPrefix="cc1" Namespace="eRaider" Assembly="eRaiderSecurityHelper" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+   	<link href='css/layout.css' rel='stylesheet' type='text/css' />
+	<link href="css/bootstrap.css" rel="stylesheet" />
+
+    <title>IT Help Desk</title>
+
+    <style>
+    hr { 
+        display: block;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        margin-left: auto;
+        margin-right: auto;
+        border-style: inset;
+        border-width: 3px;
+    } 
+    
+    .inline-button {margin: 10px;}
+
+    </style>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div class="mainbody">
+
+        <div class="title">		
+		    <a href="index.asp"><img src="images/logo.gif" style="margin-top:19px; margin-left:19px;"/></a>				
+	    </div>
+
+        <form id="form1" runat="server">    
+            <div class="navbar">
+                <div class="navbar navbar-inverse">
+                    <div class="navbar-inner">
+                        <div class="nav-collapse collapse">
+                            <ul class="nav">
+                                <li>
+                                    <asp:HyperLink ID="hptNewIssue" runat="server" NavigateUrl="~/Default.aspx">New Issue</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="hplList" runat="server" NavigateUrl="~/IssueList.aspx">Issues List</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="hplNote" runat="server" NavigateUrl="~/Notes.aspx">Notes</asp:HyperLink></li>
+                            </ul>
+                            <ul class='nav' style='float: right;'>
+                                <li><cc1:eRaiderSignOutButton ID="ERaiderSignOutButton1" runat="server" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+            </asp:ContentPlaceHolder>
+        </form>
+
+    </div>    
+</body>
+</html>

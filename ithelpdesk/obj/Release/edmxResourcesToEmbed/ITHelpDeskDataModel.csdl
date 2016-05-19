@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Athl_TicketRequestTestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Notes" Relationship="Self.FK_Notes_Categories" FromRole="Categories" ToRole="Notes" />
+  </EntityType>
+  <EntityType Name="Issue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="raiderName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="issueShortDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="issueLongDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="upload_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="submittedTime" Type="DateTime" Precision="3" />
+    <Property Name="requestFor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="modifiedAt" Type="DateTime" Precision="3" />
+    <Property Name="modifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Processes" Relationship="Self.FK_Process_Issues" FromRole="Issues" ToRole="Processes" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="isDeleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Note">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Question" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryId" Type="Int32" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Notes_Categories" FromRole="Notes" ToRole="Categories" />
+  </EntityType>
+  <EntityType Name="Process">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ChangedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="IssueId" Type="Int32" />
+    <NavigationProperty Name="Issue" Relationship="Self.FK_Process_Issues" FromRole="Processes" ToRole="Issues" />
+    <Property Name="ChangedAt" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="FK_Notes_Categories">
+    <End Role="Categories" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Notes" Type="Self.Note" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notes">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Process_Issues">
+    <End Role="Issues" Type="Self.Issue" Multiplicity="0..1" />
+    <End Role="Processes" Type="Self.Process" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Issues">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Processes">
+        <PropertyRef Name="IssueId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ITHelpDeskEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Issues" EntityType="Self.Issue" />
+    <EntitySet Name="Notes" EntityType="Self.Note" />
+    <EntitySet Name="Processes" EntityType="Self.Process" />
+    <AssociationSet Name="FK_Notes_Categories" Association="Self.FK_Notes_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Notes" EntitySet="Notes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Process_Issues" Association="Self.FK_Process_Issues">
+      <End Role="Issues" EntitySet="Issues" />
+      <End Role="Processes" EntitySet="Processes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

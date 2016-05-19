@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Athl_TicketRequestTestModelStoreContainer" CdmEntityContainer="ITHelpDeskEntities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="Athl_TicketRequestTestModel.Category">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Issues">
+      <EntityTypeMapping TypeName="Athl_TicketRequestTestModel.Issue">
+        <MappingFragment StoreEntitySet="Issues">
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="raiderName" ColumnName="raiderName" />
+          <ScalarProperty Name="issueShortDescription" ColumnName="issueShortDescription" />
+          <ScalarProperty Name="issueLongDescription" ColumnName="issueLongDescription" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="upload_path" ColumnName="upload_path" />
+          <ScalarProperty Name="submittedTime" ColumnName="submittedTime" />
+          <ScalarProperty Name="requestFor" ColumnName="requestFor" />
+          <ScalarProperty Name="modifiedAt" ColumnName="modifiedAt" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notes">
+      <EntityTypeMapping TypeName="Athl_TicketRequestTestModel.Note">
+        <MappingFragment StoreEntitySet="Notes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Processes">
+      <EntityTypeMapping TypeName="Athl_TicketRequestTestModel.Process">
+        <MappingFragment StoreEntitySet="Processes">
+          <ScalarProperty Name="ChangedAt" ColumnName="ChangedAt" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IssueId" ColumnName="IssueId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

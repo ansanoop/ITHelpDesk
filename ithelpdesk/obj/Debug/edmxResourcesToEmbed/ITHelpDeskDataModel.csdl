@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ATHL_ithelpdeskModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Notes" Relationship="ATHL_ithelpdeskModel.FK_Notes_Categories" FromRole="Category" ToRole="Note" />
+  </EntityType>
+  <EntityType Name="Issue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="raiderName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="issueShortDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="issueLongDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="upload_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="submittedTime" Type="DateTime" Precision="3" />
+    <Property Name="requestFor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="modifiedAt" Type="DateTime" Precision="3" />
+    <Property Name="modifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="isDeleted" Type="Boolean" />
+    <NavigationProperty Name="Processes" Relationship="ATHL_ithelpdeskModel.FK_Processes_Issues" FromRole="Issue" ToRole="Process" />
+  </EntityType>
+  <EntityType Name="Note">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Question" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryId" Type="Int32" />
+    <NavigationProperty Name="Category" Relationship="ATHL_ithelpdeskModel.FK_Notes_Categories" FromRole="Note" ToRole="Category" />
+  </EntityType>
+  <EntityType Name="Process">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ChangedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ChangedAt" Type="DateTime" Precision="3" />
+    <Property Name="IssueId" Type="Int32" />
+    <NavigationProperty Name="Issue" Relationship="ATHL_ithelpdeskModel.FK_Processes_Issues" FromRole="Process" ToRole="Issue" />
+  </EntityType>
+  <EntityContainer Name="ITHelpDeskEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Issues" EntityType="Self.Issue" />
+    <EntitySet Name="Notes" EntityType="Self.Note" />
+    <EntitySet Name="Processes" EntityType="Self.Process" />
+    <AssociationSet Name="FK_Notes_Categories" Association="ATHL_ithelpdeskModel.FK_Notes_Categories">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Note" EntitySet="Notes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Processes_Issues" Association="ATHL_ithelpdeskModel.FK_Processes_Issues">
+      <End Role="Issue" EntitySet="Issues" />
+      <End Role="Process" EntitySet="Processes" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_Notes_Categories">
+    <End Type="ATHL_ithelpdeskModel.Category" Role="Category" Multiplicity="0..1" />
+    <End Type="ATHL_ithelpdeskModel.Note" Role="Note" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Note">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Processes_Issues">
+    <End Type="ATHL_ithelpdeskModel.Issue" Role="Issue" Multiplicity="0..1" />
+    <End Type="ATHL_ithelpdeskModel.Process" Role="Process" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Issue">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Process">
+        <PropertyRef Name="IssueId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,78 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Master/ModifiedBootstrapMaster.master" AutoEventWireup="true" CodeBehind="NotesMaster.master.cs" Inherits="ithelpdesk.Master.NotesMaster" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderHead" runat="server">
+    <link href='css/NotesStyle.css' rel='stylesheet' type='text/css' />
+    <link href='css/ttu-jquery-ui.css' rel="stylesheet"  type="text/css" />
+    <%--<link href="http://www.depts.ttu.edu/_ttu-template/design/jquery-ui.css" rel="stylesheet" type="text/css" />--%>
+
+    <script lang="javascript">
+        // Read a page's GET URL variables and return them as an associative array.
+        function getUrlVars() {
+            if (window.location.href.indexOf('?') == -1)
+                return [];
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');            
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];                
+            }            
+            return vars;
+        }
+
+        $(document).ready(function () {
+            // Handle click question/answer collapse and expansion
+            $(".question").click(function () {
+                // To show the answer of the question
+                $(this).next(".answer").slideToggle(100);
+
+                // To show the downward narrow when the question is expanded
+                $(this).find("span").toggleClass("ui-icon-triangle-1-s");
+            });
+
+            // Highlighting selected category
+            var vars = getUrlVars();            
+            if (vars.length == 0) {                
+                $("a[name='categories_slidebar']").get(0).parentNode.setAttribute("style", "background-color: #900");
+            }
+            else {
+                var catid = vars["catid"];
+                $("#" + catid).parent().css("background-color", "#900");
+            }            
+       });
+
+   </script>    
+
+    <asp:ContentPlaceHolder ID="headerPlaceHolder" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderBody" runat="server">
+    <div class="container">
+
+        <div id="sideBar">
+            <div id="nav-main">
+                <h3>Categories<img id="add-icon" src="/Images/add.png" /></h3>
+                <asp:ListView ID="categoriesList" runat="server" DataSourceID="EntityDataSource1">
+                    <LayoutTemplate>
+                        <ul>
+                            <li id="itemPlaceholder" runat="server"></li>
+                        </ul>                        
+                    </LayoutTemplate>                    
+                    <ItemTemplate>
+                        <li>
+                            <a href='<%# "Notes.aspx?catid=" + Eval("ID") %>' id="<%# Eval("ID") %>" name="categories_slidebar" style="display:block">
+                                <%# Eval("Name") %>
+                            </a>
+                            <%--<asp:HyperLink ID="CatHyperlink" runat="server" NavigateUrl='<%# "Notes.aspx?catid=" + Eval("ID") %>' Text=<%# Eval("Name") %> />--%>
+                        </li>
+                    </ItemTemplate>
+                </asp:ListView>
+                <asp:EntityDataSource ID="EntityDataSource1" runat="server" ConnectionString="name=ITHelpDeskEntities" DefaultContainerName="ITHelpDeskEntities" EnableDelete="True" EnableFlattening="False" EnableInsert="True" EnableUpdate="True" EntitySetName="Categories" EntityTypeFilter="Category">
+                </asp:EntityDataSource>
+            </div>
+        </div>
+        
+        <div id="content">
+            <asp:ContentPlaceHolder ID="contentPlaceHolder" runat="server"></asp:ContentPlaceHolder>
+        </div>
+    </div>
+</asp:Content>

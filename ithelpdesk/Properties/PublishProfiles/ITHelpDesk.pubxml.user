@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>Z:\inetpub\wwwroot\ASP.NET Applications\ithelpdesk</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>04/01/2016 10:37:57</publishTime>
+    </File>
+    <File Include="bin/eRaiderSecurityHelper.dll">
+      <publishTime>01/30/2009 17:05:14</publishTime>
+    </File>
+    <File Include="bin/ithelpdesk.dll">
+      <publishTime>04/11/2016 15:46:22</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>03/31/2016 10:17:58</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>03/31/2016 10:17:58</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>03/31/2016 10:17:58</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>03/31/2016 10:17:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>03/31/2016 10:17:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>03/31/2016 10:17:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>03/31/2016 10:17:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>03/31/2016 10:17:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>03/31/2016 10:17:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>03/31/2016 10:17:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>03/31/2016 10:17:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>03/31/2016 10:17:59</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>03/31/2016 10:17:59</publishTime>
+    </File>
+    <File Include="css/bootstrap.css">
+      <publishTime>04/11/2016 12:44:32</publishTime>
+    </File>
+    <File Include="css/flat-ui.css">
+      <publishTime>03/31/2016 10:16:28</publishTime>
+    </File>
+    <File Include="css/layout.css">
+      <publishTime>03/31/2016 10:16:28</publishTime>
+    </File>
+    <File Include="css/NotesStyle.css">
+      <publishTime>04/11/2016 15:42:16</publishTime>
+    </File>
+    <File Include="Default.aspx">
+      <publishTime>04/04/2016 09:17:25</publishTime>
+    </File>
+    <File Include="Default.Master">
+      <publishTime>04/11/2016 15:45:29</publishTime>
+    </File>
+    <File Include="Failure.aspx">
+      <publishTime>04/11/2016 11:56:35</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>03/31/2016 10:16:28</publishTime>
+    </File>
+    <File Include="Images/cross.png">
+      <publishTime>04/11/2016 11:56:35</publishTime>
+    </File>
+    <File Include="Images/logo.gif">
+      <publishTime>03/31/2016 10:16:28</publishTime>
+    </File>
+    <File Include="IssueList.aspx">
+      <publishTime>04/11/2016 11:56:35</publishTime>
+    </File>
+    <File Include="ITHelpDeskDataModel.edmx.diagram">
+      <publishTime>04/07/2016 12:39:48</publishTime>
+    </File>
+    <File Include="Login.aspx">
+      <publishTime>03/31/2016 10:16:28</publishTime>
+    </File>
+    <File Include="Notes.aspx">
+      <publishTime>04/11/2016 15:41:01</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>04/01/2016 10:33:04</publishTime>
+    </File>
+    <File Include="Success.aspx">
+      <publishTime>04/01/2016 10:33:04</publishTime>
+    </File>
+    <File Include="ViewIssue.aspx">
+      <publishTime>04/11/2016 11:56:35</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>04/07/2016 12:41:59</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
